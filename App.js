@@ -1,4 +1,5 @@
 import React from "react";
+import { Searchbar } from "react-native-paper";
 import { StatusBar as ExpoStatusBar } from "expo-status-bar";
 import {
   StatusBar,
@@ -16,7 +17,9 @@ export default function App() {
     <>
       <SafeAreaView style={styles.container}>
         <View style={styles.search}>
-          <Text>Search</Text>
+          <Searchbar>
+            <Text>Search</Text>
+          </Searchbar>
         </View>
         <View style={styles.list}>
           <Text>Body</Text>
