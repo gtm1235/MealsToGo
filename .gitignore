@@ -30,6 +30,12 @@ yarn-error.*
 
 # local env files
 .env*.local
+.prettier*
+.eslint*
 
 # typescript
 *.tsbuildinfo
+
+
+
+%*
