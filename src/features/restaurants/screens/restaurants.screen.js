@@ -6,29 +6,27 @@ import { RestaurantInfoCard } from "../components/restaurant-info-card.component
 
 const isAndroid = Platform.OS === "android";
 
-const ScreenContainer = styled(SafeAreaView)`
+const SafeArea = styled(SafeAreaView)`
   flex: 1;
   margin-top: ${isAndroid ? StatusBar.currentHeight + "px" : "0"};
 `;
 
-const CardList = styled.View`
-  padding: 16px;
-  background-color: blue;
+const RestaurantListContainer = styled.View`
+  padding: ${(props) => props.theme.space[3]};
   flex: 1;
 `;
 
-const ScreenSearchBar = styled.View`
-  padding: 16px;
-  background-color: lightblue;
+const SearchContainer = styled.View`
+  padding: ${(props) => props.theme.space[3]};
 `;
 
 export const RestaurantsScreen = () => (
-  <ScreenContainer>
-    <ScreenSearchBar>
+  <SafeArea>
+    <SearchContainer>
       <Searchbar placeholder="Search" />
-    </ScreenSearchBar>
-    <CardList>
+    </SearchContainer>
+    <RestaurantListContainer>
       <RestaurantInfoCard />
-    </CardList>
-  </ScreenContainer>
+    </RestaurantListContainer>
+  </SafeArea>
 );
