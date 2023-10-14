@@ -8,6 +8,8 @@ import styled from "styled-components";
 const SearchContainer = styled.View`
   padding: ${(props) => props.theme.space[2]};
   margin-top: ${(props) => props.theme.space[3]};
+  margin-left: ${(props) => props.theme.space[2]};
+  margin-right: ${(props) => props.theme.space[2]};
 `;
 
 const RestaurantList = styled(FlatList).attrs((props) => ({
