@@ -1,8 +1,7 @@
-import { Image, Text, View } from "react-native";
-
 import { Card } from "react-native-paper";
+import { Image } from "react-native";
 import React from "react";
-import { Spacer } from "../../../components/spacer/spcer.component";
+import { Spacer } from "../../../components/spacer/spacer.component";
 import { SvgXml } from "react-native-svg";
 import isopen from "../../../../assets/isopen";
 import star from "../../../../assets/star";
@@ -73,25 +72,38 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
       <RestaurantCardCover key={name} source={{ uri: photos[0] }} />
       <Info>
         <Title>{name}</Title>
-        <Spacer variant="top.large" />
-        <Section>
-          <Row>
-            {ratingArray.map((_, index) => (
-              <SvgXml key={index} xml={star} width={20} height={20} />
-            ))}
-          </Row>
-          <RightJustify>
-            {isClosedTemporarily ? (
-              <Closed>Closed Temporarily</Closed>
-            ) : (
-              isOpenNow && <SvgXml xml={isopen} width={20} height={20} />
-            )}
-          </RightJustify>
-          <Spacer variant="left.large" />
-          <Image style={{ width: 15, height: 15 }} source={{ uri: icon }} />
-        </Section>
-        <Spacer variant="top.medium" />
-        <Address>{address}</Address>
+        <Spacer position="top" size="medium">
+          <Section>
+            <Spacer position="top" size="medium">
+              <Row>
+                {ratingArray.map((_, index) => (
+                  <SvgXml key={index} xml={star} width={20} height={20} />
+                ))}
+              </Row>
+            </Spacer>
+
+            <RightJustify>
+              {isClosedTemporarily ? (
+                <Closed>Closed Temporarily</Closed>
+              ) : (
+                isOpenNow && <SvgXml xml={isopen} width={20} height={20} />
+              )}
+            </RightJustify>
+
+            <Spacer position="left" size="large" />
+            <Spacer position="top" size="medium">
+              <Spacer variant="left.large">
+                <Image
+                  style={{ width: 15, height: 15 }}
+                  source={{ uri: icon }}
+                />
+              </Spacer>
+            </Spacer>
+          </Section>
+        </Spacer>
+        <Spacer position="top" size="medium">
+          <Address>{address}</Address>
+        </Spacer>
       </Info>
     </RestaurantCard>
   );
