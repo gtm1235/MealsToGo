@@ -29,6 +29,7 @@ export const RestaurantsScreen = () => (
     </SearchContainer>
     <RestaurantListContainer>
       <RestaurantInfoCard />
+      <RestaurantInfoCard />
     </RestaurantListContainer>
   </SafeArea>
 );
