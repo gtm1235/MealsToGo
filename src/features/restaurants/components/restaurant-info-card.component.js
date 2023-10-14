@@ -1,10 +1,12 @@
-import React from "react";
-import { View } from "react-native";
-import styled from "styled-components";
+import { Image, Text, View } from "react-native";
+
 import { Card } from "react-native-paper";
+import React from "react";
+import { Spacer } from "../../../components/spacer/spcer.component";
 import { SvgXml } from "react-native-svg";
-import star from "../../../../assets/star";
 import isopen from "../../../../assets/isopen";
+import star from "../../../../assets/star";
+import styled from "styled-components";
 
 const Title = styled.Text`
   font-family: ${(props) => props.theme.fonts.heading};
@@ -12,8 +14,18 @@ const Title = styled.Text`
   color: ${(props) => props.theme.colors.ui.primary};
 `;
 
+const Closed = styled.Text`
+  font-family: ${(props) => props.theme.fonts.heading};
+  font-size: ${(props) => props.theme.fontSizes.body};
+  color: ${(props) => props.theme.colors.ui.error};
+`;
+
 const Info = styled.View`
   padding: ${(props) => props.theme.space[3]};
+`;
+
+const Section = styled.View`
+  flex-direction: row;
 `;
 
 const Row = styled.View`
@@ -44,14 +56,14 @@ const RestaurantCardCover = styled(Card.Cover)`
 export const RestaurantInfoCard = ({ restaurant = {} }) => {
   const {
     name = "Some Restaurant",
-    icon = "../../../../assets/icon.png",
+    icon = "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/lodging-71.png",
     photos = [
       "https://t3.ftcdn.net/jpg/05/60/99/66/240_F_560996661_QW68Tqj480hkYulYivdMxKqXkiWh661v.jpg",
     ],
     address = "100 Some Street",
     isOpenNow = true,
     rating = 4,
-    isCLosedTemporarily = false,
+    isClosedTemporarily = false,
   } = restaurant;
 
   const ratingArray = Array.from(new Array(Math.floor(rating)));
@@ -61,15 +73,24 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
       <RestaurantCardCover key={name} source={{ uri: photos[0] }} />
       <Info>
         <Title>{name}</Title>
-        <Row>
-          {ratingArray.map((_, index) => (
-            <SvgXml key={index} xml={star} width={20} height={20} />
-          ))}
-
+        <Spacer variant="top.large" />
+        <Section>
+          <Row>
+            {ratingArray.map((_, index) => (
+              <SvgXml key={index} xml={star} width={20} height={20} />
+            ))}
+          </Row>
           <RightJustify>
-            <SvgXml xml={isopen} width={20} height={20} />
+            {isClosedTemporarily ? (
+              <Closed>Closed Temporarily</Closed>
+            ) : (
+              isOpenNow && <SvgXml xml={isopen} width={20} height={20} />
+            )}
           </RightJustify>
-        </Row>
+          <Spacer variant="left.large" />
+          <Image style={{ width: 15, height: 15 }} source={{ uri: icon }} />
+        </Section>
+        <Spacer variant="top.medium" />
         <Address>{address}</Address>
       </Info>
     </RestaurantCard>
