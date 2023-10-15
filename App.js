@@ -9,6 +9,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { MapScreen } from "./src/features/restaurants/screens/map.screen";
 import { NavigationContainer } from "@react-navigation/native";
 import React from "react";
+import { RestaurantsContextProvider } from "./src/services/restaurants/restaurants.context";
 import { RestaurantsScreen } from "./src/features/restaurants/screens/restaurants.screen";
 import { SettingsScreen } from "./src/features/restaurants/screens/settings.screen";
 import { ThemeProvider } from "styled-components";
@@ -52,13 +53,15 @@ export default function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <NavigationContainer>
-          <Tab.Navigator screenOptions={createScreenOptions}>
-            <Tab.Screen name="Restaurants" component={RestaurantsScreen} />
-            <Tab.Screen name="Map" component={MapScreen} />
-            <Tab.Screen name="Settings" component={SettingsScreen} />
-          </Tab.Navigator>
-        </NavigationContainer>
+        <RestaurantsContextProvider>
+          <NavigationContainer>
+            <Tab.Navigator screenOptions={createScreenOptions}>
+              <Tab.Screen name="Restaurants" component={RestaurantsScreen} />
+              <Tab.Screen name="Map" component={MapScreen} />
+              <Tab.Screen name="Settings" component={SettingsScreen} />
+            </Tab.Navigator>
+          </NavigationContainer>
+        </RestaurantsContextProvider>
       </ThemeProvider>
       <ExpoStatusBar style="auto" />
     </>
