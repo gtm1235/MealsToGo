@@ -13,7 +13,6 @@ import { RestaurantsScreen } from "./src/features/restaurants/screens/restaurant
 import { SettingsScreen } from "./src/features/restaurants/screens/settings.screen";
 import { ThemeProvider } from "styled-components";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { restaurantsRequest } from "./src/services/restaurants/restaurants.service";
 import { theme } from "./src/infrastucture/theme/index";
 
 const TAB_ICON = {

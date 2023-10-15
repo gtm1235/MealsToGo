@@ -41,3 +41,5 @@ babel.config.js
 .expo
 .vscode
 %*
+
+scratch*.*
