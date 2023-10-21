@@ -6,10 +6,11 @@ export const FavoritesContextProvider = ({ children }) => {
   const [favorites, setFavorites] = useState([]);
 
   const add = (restaurant) => {
-    setFavorites([...favorites], restaurant);
+    setFavorites([...favorites, restaurant]);
   };
 
   const remove = (restaurant) => {
+    console.log(restaurant);
     const newFavorites = favorites.filter(
       (x) => x.placeId !== restaurant.placeId,
     );

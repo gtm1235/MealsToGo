@@ -8,10 +8,12 @@ import { StatusBar as ExpoStatusBar } from "expo-status-bar";
 
 import React from "react";
 import { RestaurantsContextProvider } from "./src/services/restaurants/restaurants.context";
+import { LocationContextProvider } from "./src/services/location/location.context";
+import { FavoritesContextProvider } from "./src/services/favorites/favorites.context";
 
 import { ThemeProvider } from "styled-components";
 import { theme } from "./src/infrastucture/theme/index";
-import { LocationContextProvider } from "./src/services/location/location.context";
+
 import { Navigation } from "./src/infrastucture/navigation/index";
 
 export default function App() {
@@ -30,11 +32,13 @@ export default function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <LocationContextProvider>
-          <RestaurantsContextProvider>
-            <Navigation />
-          </RestaurantsContextProvider>
-        </LocationContextProvider>
+        <FavoritesContextProvider>
+          <LocationContextProvider>
+            <RestaurantsContextProvider>
+              <Navigation />
+            </RestaurantsContextProvider>
+          </LocationContextProvider>
+        </FavoritesContextProvider>
       </ThemeProvider>
       <ExpoStatusBar style="auto" />
     </>

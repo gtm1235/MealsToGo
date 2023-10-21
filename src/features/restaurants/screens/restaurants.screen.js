@@ -4,6 +4,7 @@ import React, { useContext } from "react";
 import { FlatList, TouchableOpacity } from "react-native";
 import { RestaurantInfoCard } from "../components/restaurant-info-card.component";
 import { RestaurantsContext } from "../../../services/restaurants/restaurants.context";
+import { FavoritesContext } from "../../../services/favorites/favorites.context";
 import { SafeArea } from "../../../components/utils/safe-area.component";
 import { Search } from "../components/search.component";
 import styled from "styled-components";
@@ -23,6 +24,8 @@ const RestaurantList = styled(FlatList).attrs((props) => ({
 
 export const RestaurantsScreen = ({ navigation }) => {
   const { isLoading, error, restaurants } = useContext(RestaurantsContext);
+  const { favorites } = useContext(FavoritesContext);
+  console.log(favorites);
 
   return (
     <SafeArea>

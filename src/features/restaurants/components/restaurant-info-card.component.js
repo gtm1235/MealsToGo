@@ -15,6 +15,7 @@ import { SvgXml } from "react-native-svg";
 import { Text } from "../../../components/typography/text.component";
 import isopen from "../../../../assets/isopen";
 import star from "../../../../assets/star";
+import { Favorites } from "../../../components/favorites/favorites.component.js";
 
 export const RestaurantInfoCard = ({ restaurant = {} }) => {
   const {
@@ -34,6 +35,7 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
 
   return (
     <Spacer position="bottom" size="medium">
+      <Favorites restaurant={restaurant} />
       <RestaurantCard elevation={5}>
         <RestaurantCardCover key={name} source={{ uri: photos[0] }} />
         <Info>
