@@ -24,7 +24,7 @@ const RestaurantList = styled(FlatList).attrs((props) => ({
 }))``;
 
 export const RestaurantsScreen = ({ navigation }) => {
-  const { isLoading, error, restaurants } = useContext(RestaurantsContext);
+  const { isLoading, restaurants } = useContext(RestaurantsContext);
   const { favorites } = useContext(FavoritesContext);
   const [isToggled, setIsToggled] = useState(false);
 
@@ -43,7 +43,9 @@ export const RestaurantsScreen = ({ navigation }) => {
           setIsToggled(!isToggled);
         }}
       />
-      {isToggled && <FavoritesBar />}
+      {isToggled && (
+        <FavoritesBar favorites={favorites} onNavigate={navigation.navigate} />
+      )}
       <RestaurantList
         data={restaurants}
         renderItem={({ item }) => {
