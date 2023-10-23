@@ -1,5 +1,4 @@
 import React, { useContext, useState, useEffect } from "react";
-import { View } from "react-native";
 import styled from "styled-components/native";
 import MapView, { Marker, Callout } from "react-native-maps";
 import { SafeArea } from "../../../components/utils/safe-area.component";

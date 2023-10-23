@@ -43,3 +43,5 @@ babel.config.js
 %*
 
 scratch*.*
+
+firebase.config.js
