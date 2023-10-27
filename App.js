@@ -7,17 +7,9 @@ import {
 import { StatusBar as ExpoStatusBar } from "expo-status-bar";
 import { getApps, initializeApp } from "firebase/app";
 
-import {
-  getAuth,
-  signInWithEmailAndPassword,
-  createUserWithEmailAndPassword,
-} from "firebase/auth";
 import firebaseConfig from "./firebase.config";
 
-import React, { useState, useEffect } from "react";
-import { RestaurantsContextProvider } from "./src/services/restaurants/restaurants.context";
-import { LocationContextProvider } from "./src/services/location/location.context";
-import { FavoritesContextProvider } from "./src/services/favorites/favorites.context";
+import React from "react";
 
 import { ThemeProvider } from "styled-components";
 import { theme } from "./src/infrastucture/theme/index";
@@ -49,13 +41,7 @@ export default function App() {
     <>
       <ThemeProvider theme={theme}>
         <AuthenticationContextProvider>
-          <FavoritesContextProvider>
-            <LocationContextProvider>
-              <RestaurantsContextProvider>
-                <Navigation />
-              </RestaurantsContextProvider>
-            </LocationContextProvider>
-          </FavoritesContextProvider>
+          <Navigation />
         </AuthenticationContextProvider>
       </ThemeProvider>
       <ExpoStatusBar style="auto" />

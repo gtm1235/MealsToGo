@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import { View, Text } from "react-native";
 import { AccountNavigator } from "./account.navigator";
 import { NavigationContainer } from "@react-navigation/native";
 
