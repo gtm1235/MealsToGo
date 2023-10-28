@@ -14,6 +14,7 @@ export const FavoritesContextProvider = ({ children }) => {
     try {
       const jsonValue = JSON.stringify(value);
       await AsyncStorage.setItem(`@favorites-${uid}`, jsonValue);
+      setClearIntent(false);
     } catch (e) {
       console.log(e);
     }

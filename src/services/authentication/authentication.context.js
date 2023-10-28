@@ -25,6 +25,7 @@ export const AuthenticationContextProvider = ({ children }) => {
     if (usr) {
       setUser(usr);
       setIsLoading(false);
+      setError(false);
     } else {
       setIsLoading(false);
     }
@@ -40,6 +41,7 @@ export const AuthenticationContextProvider = ({ children }) => {
       .catch((e) => {
         setIsLoading(false);
         setError("error on login", e);
+        setError(false);
       });
   };
 
@@ -55,6 +57,7 @@ export const AuthenticationContextProvider = ({ children }) => {
       .then((u) => {
         setUser(u);
         setIsLoading(false);
+        setError(false);
       })
       .catch((e) => {
         setIsLoading(false);
@@ -67,6 +70,7 @@ export const AuthenticationContextProvider = ({ children }) => {
     signOut(auth)
       .then((u) => {
         setUser(null);
+        setError(false);
       })
       .catch((e) => {
         setError(e);

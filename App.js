@@ -11,6 +11,7 @@ import firebaseConfig from "./firebase.config";
 
 import React from "react";
 
+
 import { ThemeProvider } from "styled-components";
 import { theme } from "./src/infrastucture/theme/index";
 
@@ -41,7 +42,9 @@ export default function App() {
     <>
       <ThemeProvider theme={theme}>
         <AuthenticationContextProvider>
-          <Navigation />
+
+                <Navigation />
+
         </AuthenticationContextProvider>
       </ThemeProvider>
       <ExpoStatusBar style="auto" />

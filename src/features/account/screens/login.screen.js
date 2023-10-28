@@ -18,7 +18,9 @@ import { AuthenticationContext } from "../../../services/authentication/authenti
 export const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { onLogin, isLoading, error } = useContext(AuthenticationContext);
+  const { onLogin, isLoading, error, setError } = useContext(
+    AuthenticationContext,
+  );
 
   return (
     <AccountBackground>
@@ -74,7 +76,13 @@ export const LoginScreen = ({ navigation }) => {
         </Spacer>
       </AccountContainer>
       <Spacer size="large">
-        <AuthButton mode="contained" onPress={() => navigation.goBack()}>
+        <AuthButton
+          mode="contained"
+          onPress={() => {
+            navigation.goBack();
+            setError(false);
+          }}
+        >
           Back
         </AuthButton>
       </Spacer>
